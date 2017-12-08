@@ -10,6 +10,7 @@
 #
 #================================================================
 
+# 1  Timeouts are a constraint on the runtime of a block of code or a Greenlet 
 
 import gevent
 from gevent import Timeout
@@ -29,6 +30,9 @@ try:
     gevent.spawn(wait).join()
 except Timeout:
     print 'Could\'t complete'
+
+# 2  
+
 ##import gevent
 ##from gevent import Timeout
 ##

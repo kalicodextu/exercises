@@ -6,7 +6,7 @@
 #   File Name：gevent_test004.py
 #   Author   ：GaoZhiChao
 #   Date     ：2017年12月07日
-#   Desc     ：
+#   Desc     ：spawn' cls parameter must be callable
 #
 #================================================================
 
@@ -37,3 +37,22 @@ threads = [thread1, thread2, thread3]
 
 # Block until all threads complete.
 gevent.joinall(threads)
+
+
+
+#    source code @file: greenlet.py
+#    @classmethod
+#    def spawn(cls, *args, **kwargs):
+#        """
+#        Create a new :class:`Greenlet` object and schedule it to run ``function(*args, **kwargs)``.
+#        This can be used as ``gevent.spawn`` or ``Greenlet.spawn``.
+#
+#        The arguments are passed to :meth:`Greenlet.__init__`.
+#
+#        .. versionchanged:: 1.1b1
+#            If a *function* is given that is not callable, immediately raise a :exc:`TypeError`
+#            instead of spawning a greenlet that will raise an uncaught TypeError.
+#        """
+#        g = cls(*args, **kwargs)
+#        g.start()
+#        return g

@@ -6,7 +6,7 @@
 #   File Name：gevent_test03.py
 #   Author   ：GaoZhiChao
 #   Date     ：2017年12月07日
-#   Desc     ：
+#   Desc     ：greenlets are deterministic
 #
 #================================================================
 
@@ -43,3 +43,9 @@ run4 = [a for a in p.imap_unordered(echo, xrange(10))]
 print run1, run2, run3
 print( run1 == run2 == run3 == run4 )
 
+
+# OutPut:
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] [0, 1, 3, 4, 2, 5, 6, 7, 8, 9] [0, 3, 1, 2, 4, 5, 6, 7, 8, 9]
+# False
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# True

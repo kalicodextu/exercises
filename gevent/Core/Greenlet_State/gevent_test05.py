@@ -37,5 +37,11 @@ except Exception as e:
     print 'This will never be reached!'
 
 
-print winner.ready(), loser.ready(), winner.value, loser.value,\
-winner.exception, loser.exception
+print winner.ready(), loser.ready(), winner.value, loser.value, winner.exception, loser.exception
+
+
+# Output:
+
+# True
+# True
+# True True you win! you fail! None None

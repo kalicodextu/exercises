@@ -6,7 +6,8 @@
 #   File Name：gevent_test02.py
 #   Author   ：GaoZhiChao
 #   Date     ：2017年12月07日
-#   Desc     ：
+#   Desc     ：fetching data from a server asynchronously, the runtime of fetch() will differ
+#              between requests given the load on the remote server.
 #
 #================================================================
 
