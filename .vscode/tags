@@ -3,21 +3,94 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_VERSION	5.8	//
+Actor	../gevent/Data_Structures/Actors/actors01.py	/^class Actor(gevent.Greenlet):$/;"	kind:class	line:9
+AsyncResult	../gevent/Data_Structures/Event/gevent_test10.py	/^from gevent.event import AsyncResult$/;"	kind:namespace	line:6
+BoundedSemaphore	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^from gevent.lock import BoundedSemaphore$/;"	kind:namespace	line:10
+Empty	../gevent/Data_Structures/Queue/gevent_queue02.py	/^from gevent.queue import Queue, Empty$/;"	kind:namespace	line:6
+Event	../gevent/Data_Structures/Event/gevent_test09.py	/^from gevent.event import Event$/;"	kind:namespace	line:6
+Greenlet	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^from gevent import Greenlet$/;"	kind:namespace	line:6
+Greenlet	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^from gevent import Greenlet$/;"	kind:namespace	line:15
+Greenlet	../gevent/Data_Structures/Actors/actors01.py	/^from gevent import Greenlet$/;"	kind:namespace	line:7
+Group	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^from gevent.pool import Group$/;"	kind:namespace	line:6
+Group	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^from gevent.pool import Group$/;"	kind:namespace	line:7
+LocalProxy	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^from werkzeug.local import LocalProxy$/;"	kind:namespace	line:9
+MyGreenlet	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^class MyGreenlet(Greenlet):$/;"	kind:class	line:10
+PIPE	../gevent/Data_Structures/Subprocess/subprocess01.py	/^from gevent.subprocess import Popen, PIPE$/;"	kind:namespace	line:9
+Pinger	../gevent/Data_Structures/Actors/actors01.py	/^class Pinger(Actor):$/;"	kind:class	line:28
+Pipe	../gevent/Data_Structures/Subprocess/subprocess02.py	/^from multiprocessing import Process, Pipe$/;"	kind:namespace	line:7
+Ponger	../gevent/Data_Structures/Actors/actors01.py	/^class Ponger(Actor):$/;"	kind:class	line:34
+Pool	../gevent/Core/Determinism/gevent_test03.py	/^from gevent.pool import Pool$/;"	kind:namespace	line:35
+Pool	../gevent/Core/Determinism/gevent_test03.py	/^from multiprocessing.pool import Pool$/;"	kind:namespace	line:22
+Pool	../gevent/Data_Structures/Groups_and_Pools/gevent_pool01.py	/^from gevent.pool import Pool$/;"	kind:namespace	line:7
+Pool	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^from gevent.pool import Pool$/;"	kind:namespace	line:6
+Popen	../gevent/Data_Structures/Subprocess/subprocess01.py	/^from gevent.subprocess import Popen, PIPE$/;"	kind:namespace	line:9
+Process	../gevent/Data_Structures/Subprocess/subprocess02.py	/^from multiprocessing import Process, Pipe$/;"	kind:namespace	line:7
+Queue	../gevent/Data_Structures/Actors/actors01.py	/^from gevent.queue import Queue$/;"	kind:namespace	line:6
+Queue	../gevent/Data_Structures/Queue/gevent_queue01.py	/^from gevent.queue import Queue$/;"	kind:namespace	line:6
+Queue	../gevent/Data_Structures/Queue/gevent_queue02.py	/^from gevent.queue import Queue, Empty$/;"	kind:namespace	line:6
+Request	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^from werkzeug.wrappers import Request$/;"	kind:namespace	line:10
+Timeout	../gevent/Core/Timeouts/gevent_test06.py	/^from gevent import Timeout$/;"	kind:namespace	line:16
+Timeout	../gevent/Core/Timeouts/gevent_test07.py	/^from gevent import Timeout$/;"	kind:namespace	line:6
+WSGIServer	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^from gevent.wsgi import WSGIServer$/;"	kind:namespace	line:13
+__init__	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^    def __init__(self, message, n):$/;"	kind:member	line:11
+__init__	../gevent/Data_Structures/Actors/actors01.py	/^    def __init__(self):$/;"	kind:member	line:11
+_requests	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^_requests = local()$/;"	kind:variable	line:15
+_run	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^    def _run(self):$/;"	kind:member	line:16
+_run	../gevent/Data_Structures/Actors/actors01.py	/^    def _run(self):$/;"	kind:member	line:21
 a	../gevent/Data_Structures/Event/gevent_test10.py	/^a = AsyncResult()$/;"	kind:variable	line:7
+actors01.py	../gevent/Data_Structures/Actors/actors01.py	1;"	kind:file	line:1
+application	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^def application(environ, start_response):$/;"	kind:function	line:27
 asynchronous	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test01.py	/^def asynchronous():$/;"	kind:function	line:28
-asynchronous	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^def asynchronous():$/;"	kind:function	line:37
-boss	../gevent/Data_Structures/Queue/gevent_test11.py	/^def boss():$/;"	kind:function	line:19
-boss	../gevent/Data_Structures/Queue/gevent_test12.py	/^def boss():$/;"	kind:function	line:19
+asynchronous	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^def asynchronous():$/;"	kind:function	line:38
+boss	../gevent/Data_Structures/Queue/gevent_queue01.py	/^def boss():$/;"	kind:function	line:19
+boss	../gevent/Data_Structures/Queue/gevent_queue02.py	/^def boss():$/;"	kind:function	line:19
+contextmanager	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^from contextlib import contextmanager$/;"	kind:namespace	line:11
+cron	../gevent/Data_Structures/Subprocess/subprocess01.py	/^def cron():$/;"	kind:function	line:12
 echo	../gevent/Core/Determinism/gevent_test03.py	/^def echo(i):$/;"	kind:function	line:16
 evt	../gevent/Data_Structures/Event/gevent_test09.py	/^evt = Event()$/;"	kind:variable	line:13
+f1	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^def f1():$/;"	kind:function	line:14
+f2	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^def f2():$/;"	kind:function	line:18
 fail	../gevent/Core/Greenlet_State/gevent_test05.py	/^def fail():$/;"	kind:function	line:19
-fetch	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^def fetch(pid):$/;"	kind:function	line:23
+fetch	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^def fetch(pid):$/;"	kind:function	line:24
 foo	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^def foo(message, n):$/;"	kind:function	line:17
-g1	../gevent/Data_Structures/Groups_and_Pools/gevent_test13.py	/^g1 = gevent.spawn(talk, 'bar')$/;"	kind:variable	line:12
-g2	../gevent/Data_Structures/Groups_and_Pools/gevent_test13.py	/^g2 = gevent.spawn(talk, 'foo')$/;"	kind:variable	line:13
-g3	../gevent/Data_Structures/Groups_and_Pools/gevent_test13.py	/^g3 = gevent.spawn(talk, 'fizz')$/;"	kind:variable	line:14
+g	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^g = MyGreenlet('hi, darren!', 3)$/;"	kind:variable	line:23
+g	../gevent/Data_Structures/Subprocess/subprocess01.py	/^g = gevent.spawn(cron)$/;"	kind:variable	line:17
+g1	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^g1 = gevent.spawn(talk, 'bar')$/;"	kind:variable	line:12
+g1	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^g1 = gevent.spawn(f1)$/;"	kind:variable	line:27
+g2	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^g2 = gevent.spawn(talk, 'foo')$/;"	kind:variable	line:13
+g2	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^g2 = gevent.spawn(f2)$/;"	kind:variable	line:28
+g3	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^g3 = gevent.spawn(talk, 'fizz')$/;"	kind:variable	line:14
+get_msg	../gevent/Data_Structures/Subprocess/subprocess02.py	/^def get_msg():$/;"	kind:function	line:26
+getcurrent	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^from gevent import getcurrent$/;"	kind:namespace	line:6
+gevent	../gevent/Core/Greenlet_State/gevent_test05.py	/^import gevent$/;"	kind:namespace	line:14
+gevent	../gevent/Core/Program_Shutdown/gevent_test15.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^import gevent$/;"	kind:namespace	line:14
+gevent	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^import gevent $/;"	kind:namespace	line:14
+gevent	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test01.py	/^import gevent$/;"	kind:namespace	line:14
+gevent	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^import gevent$/;"	kind:namespace	line:19
+gevent	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^import gevent.monkey$/;"	kind:namespace	line:15
+gevent	../gevent/Core/Timeouts/gevent_test06.py	/^import gevent$/;"	kind:namespace	line:15
+gevent	../gevent/Core/Timeouts/gevent_test07.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Actors/actors01.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Event/gevent_test09.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Event/gevent_test10.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Groups_and_Pools/gevent_pool01.py	/^import gevent$/;"	kind:namespace	line:6
+gevent	../gevent/Data_Structures/Queue/gevent_queue01.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Queue/gevent_queue02.py	/^import gevent$/;"	kind:namespace	line:5
+gevent	../gevent/Data_Structures/Subprocess/subprocess01.py	/^import gevent$/;"	kind:namespace	line:8
+gevent	../gevent/Data_Structures/Subprocess/subprocess02.py	/^import gevent$/;"	kind:namespace	line:6
+gevent	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^import gevent$/;"	kind:namespace	line:8
+gevent_group01.py	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	1;"	kind:file	line:1
+gevent_group02.py	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	1;"	kind:file	line:1
+gevent_pool01.py	../gevent/Data_Structures/Groups_and_Pools/gevent_pool01.py	1;"	kind:file	line:1
+gevent_queue01.py	../gevent/Data_Structures/Queue/gevent_queue01.py	1;"	kind:file	line:1
+gevent_queue02.py	../gevent/Data_Structures/Queue/gevent_queue02.py	1;"	kind:file	line:1
 gevent_test.py	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	1;"	kind:file	line:1
+gevent_test004.py	../gevent/Core/Spawning_Greenlets/gevent_test004.py	1;"	kind:file	line:1
 gevent_test01.py	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test01.py	1;"	kind:file	line:1
 gevent_test02.py	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	1;"	kind:file	line:1
 gevent_test03.py	../gevent/Core/Determinism/gevent_test03.py	1;"	kind:file	line:1
@@ -28,23 +101,38 @@ gevent_test07.py	../gevent/Core/Timeouts/gevent_test07.py	1;"	kind:file	line:1
 gevent_test08.py	../gevent/Core/Monkeypatching/gevent_test08.py	1;"	kind:file	line:1
 gevent_test09.py	../gevent/Data_Structures/Event/gevent_test09.py	1;"	kind:file	line:1
 gevent_test10.py	../gevent/Data_Structures/Event/gevent_test10.py	1;"	kind:file	line:1
-gevent_test11.py	../gevent/Data_Structures/Queue/gevent_test11.py	1;"	kind:file	line:1
-gevent_test12.py	../gevent/Data_Structures/Queue/gevent_test12.py	1;"	kind:file	line:1
-gevent_test13.py	../gevent/Data_Structures/Groups_and_Pools/gevent_test13.py	1;"	kind:file	line:1
-gevent_test14.py	../gevent/Data_Structures/Groups_and_Pools/gevent_test14.py	1;"	kind:file	line:1
+gevent_test15.py	../gevent/Core/Program_Shutdown/gevent_test15.py	1;"	kind:file	line:1
 gr1	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^def gr1():$/;"	kind:function	line:22
 gr2	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^def gr2():$/;"	kind:function	line:28
 gr3	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^def gr3():$/;"	kind:function	line:34
-group	../gevent/Data_Structures/Groups_and_Pools/gevent_test13.py	/^group = Group()$/;"	kind:variable	line:16
-group	../gevent/Data_Structures/Groups_and_Pools/gevent_test14.py	/^group = Group()$/;"	kind:variable	line:9
-hello_from	../gevent/Data_Structures/Groups_and_Pools/gevent_test14.py	/^def hello_from(n):$/;"	kind:function	line:11
-igroup	../gevent/Data_Structures/Groups_and_Pools/gevent_test14.py	/^igroup = Group()$/;"	kind:variable	line:30
-intensive	../gevent/Data_Structures/Groups_and_Pools/gevent_test14.py	/^def intensive(n):$/;"	kind:function	line:18
+group	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^group = Group()$/;"	kind:variable	line:16
+group	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^group = Group()$/;"	kind:variable	line:9
+hello_from	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^def hello_from(n):$/;"	kind:function	line:11
+hello_from	../gevent/Data_Structures/Groups_and_Pools/gevent_pool01.py	/^def hello_from(n):$/;"	kind:function	line:11
+igroup	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^igroup = Group()$/;"	kind:variable	line:30
+intensive	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^def intensive(n):$/;"	kind:function	line:18
+json	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^import simplejson as json$/;"	kind:namespace	line:21
+local	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^from gevent.local import local$/;"	kind:namespace	line:9
+local	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^from gevent.local import local$/;"	kind:namespace	line:8
+logic	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^def logic():$/;"	kind:function	line:24
 loser	../gevent/Core/Greenlet_State/gevent_test05.py	/^loser = gevent.spawn(fail)$/;"	kind:variable	line:24
 main	../gevent/Data_Structures/Event/gevent_test09.py	/^def main():$/;"	kind:function	line:29
-ogroup	../gevent/Data_Structures/Groups_and_Pools/gevent_test14.py	/^ogroup = Group()$/;"	kind:variable	line:24
+monkey	../gevent/Core/Monkeypatching/gevent_test08.py	/^from gevent import monkey$/;"	kind:namespace	line:5
+monkey	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^import gevent.monkey$/;"	kind:namespace	line:15
+ogroup	../gevent/Data_Structures/Groups_and_Pools/gevent_group02.py	/^ogroup = Group()$/;"	kind:variable	line:24
 p	../gevent/Core/Determinism/gevent_test03.py	/^p = Pool(10)$/;"	kind:variable	line:24
 p	../gevent/Core/Determinism/gevent_test03.py	/^p = Pool(10)$/;"	kind:variable	line:37
+ping	../gevent/Data_Structures/Actors/actors01.py	/^ping = Pinger()$/;"	kind:variable	line:40
+pong	../gevent/Data_Structures/Actors/actors01.py	/^pong = Ponger()$/;"	kind:variable	line:41
+pool	../gevent/Data_Structures/Groups_and_Pools/gevent_pool01.py	/^pool = Pool(2)$/;"	kind:variable	line:9
+pool	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^pool = Pool()$/;"	kind:variable	line:30
+put_msg	../gevent/Data_Structures/Subprocess/subprocess02.py	/^def put_msg():$/;"	kind:function	line:21
+random	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test01.py	/^import random$/;"	kind:namespace	line:15
+receive	../gevent/Data_Structures/Actors/actors01.py	/^    def receive(self, message):$/;"	kind:member	line:15
+receive	../gevent/Data_Structures/Actors/actors01.py	/^    def receive(self, message):$/;"	kind:member	line:29
+receive	../gevent/Data_Structures/Actors/actors01.py	/^    def receive(self, message):$/;"	kind:member	line:35
+relay	../gevent/Data_Structures/Subprocess/subprocess02.py	/^def relay():$/;"	kind:function	line:16
+request	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^request = LocalProxy(lambda: _requests.request)$/;"	kind:variable	line:16
 run1	../gevent/Core/Determinism/gevent_test03.py	/^run1 = [a for a in p.imap_unordered(echo, xrange(10))]$/;"	kind:variable	line:25
 run1	../gevent/Core/Determinism/gevent_test03.py	/^run1 = [a for a in p.imap_unordered(echo, xrange(10))]$/;"	kind:variable	line:38
 run2	../gevent/Core/Determinism/gevent_test03.py	/^run2 = [a for a in p.imap_unordered(echo, xrange(10))]$/;"	kind:variable	line:26
@@ -53,31 +141,54 @@ run3	../gevent/Core/Determinism/gevent_test03.py	/^run3 = [a for a in p.imap_uno
 run3	../gevent/Core/Determinism/gevent_test03.py	/^run3 = [a for a in p.imap_unordered(echo, xrange(10))]$/;"	kind:variable	line:40
 run4	../gevent/Core/Determinism/gevent_test03.py	/^run4 = [a for a in p.imap_unordered(echo, xrange(10))]$/;"	kind:variable	line:28
 run4	../gevent/Core/Determinism/gevent_test03.py	/^run4 = [a for a in p.imap_unordered(echo, xrange(10))]$/;"	kind:variable	line:41
-seconds	../gevent/Core/Timeouts/gevent_test06.py	/^seconds = 10$/;"	kind:variable	line:18
+run_forever	../gevent/Core/Program_Shutdown/gevent_test15.py	/^def run_forever():$/;"	kind:function	line:8
+seconds	../gevent/Core/Timeouts/gevent_test06.py	/^seconds = 10$/;"	kind:variable	line:19
+select	../gevent/Core/Monkeypatching/gevent_test08.py	/^import select$/;"	kind:namespace	line:2
+select	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^from gevent import select$/;"	kind:namespace	line:16
+sem	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^sem = BoundedSemaphore(2)$/;"	kind:variable	line:13
+semaphores.py	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	1;"	kind:file	line:1
+sessionmanager	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	/^def sessionmanager(environ):$/;"	kind:function	line:19
 setter	../gevent/Data_Structures/Event/gevent_test09.py	/^def setter():$/;"	kind:function	line:15
 setter	../gevent/Data_Structures/Event/gevent_test10.py	/^def setter():$/;"	kind:function	line:9
+signal	../gevent/Core/Program_Shutdown/gevent_test15.py	/^import signal$/;"	kind:namespace	line:6
+sleep	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^from gevent import sleep$/;"	kind:namespace	line:5
+socket	../gevent/Core/Monkeypatching/gevent_test08.py	/^import socket$/;"	kind:namespace	line:1
 start	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^start = time.time()$/;"	kind:variable	line:19
+stash	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	/^stash = local()$/;"	kind:variable	line:12
+sub	../gevent/Data_Structures/Subprocess/subprocess01.py	/^sub = Popen(['sleep 1; uname'], stdout=PIPE, shell=True)$/;"	kind:variable	line:18
+subprocess01.py	../gevent/Data_Structures/Subprocess/subprocess01.py	1;"	kind:file	line:1
+subprocess02.py	../gevent/Data_Structures/Subprocess/subprocess02.py	1;"	kind:file	line:1
 synchronous	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test01.py	/^def synchronous():$/;"	kind:function	line:24
-synchronous	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^def synchronous():$/;"	kind:function	line:32
-talk	../gevent/Data_Structures/Groups_and_Pools/gevent_test13.py	/^def talk(msg):$/;"	kind:function	line:8
+synchronous	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^def synchronous():$/;"	kind:function	line:33
+talk	../gevent/Data_Structures/Groups_and_Pools/gevent_group01.py	/^def talk(msg):$/;"	kind:function	line:8
 task	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test01.py	/^def task(pid):$/;"	kind:function	line:17
-tasks	../gevent/Data_Structures/Queue/gevent_test11.py	/^tasks = Queue()$/;"	kind:variable	line:8
-tasks	../gevent/Data_Structures/Queue/gevent_test12.py	/^tasks = Queue(maxsize=3)$/;"	kind:variable	line:8
+tasks	../gevent/Data_Structures/Queue/gevent_queue01.py	/^tasks = Queue()$/;"	kind:variable	line:8
+tasks	../gevent/Data_Structures/Queue/gevent_queue02.py	/^tasks = Queue(maxsize=3)$/;"	kind:variable	line:8
 thread1	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^thread1 = Greenlet.spawn(foo, "Hello", 1)$/;"	kind:variable	line:27
 thread1	../gevent/Core/Timeouts/gevent_test07.py	/^thread1 = gevent.spawn(wait)$/;"	kind:variable	line:12
 thread2	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^thread2 = gevent.spawn(foo, "I live!", 2)$/;"	kind:variable	line:31
 thread2	../gevent/Core/Timeouts/gevent_test07.py	/^thread2 = gevent.spawn(wait)$/;"	kind:variable	line:22
 thread3	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^thread3 = gevent.spawn(lambda x: (x+1), 2)$/;"	kind:variable	line:34
+thread_locals01.py	../gevent/Data_Structures/Thread_Locals/thread_locals01.py	1;"	kind:file	line:1
+thread_locals02.py	../gevent/Data_Structures/Thread_Locals/thread_locals02.py	1;"	kind:file	line:1
 threads	../gevent/Core/Spawning_Greenlets/gevent_test04.py	/^threads = [thread1, thread2, thread3]$/;"	kind:variable	line:36
 tic	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^tic = lambda: 'at %1.1fs seconds' % (time.time() - start)$/;"	kind:variable	line:20
-timeout	../gevent/Core/Timeouts/gevent_test06.py	/^timeout = Timeout(seconds)$/;"	kind:variable	line:21
+time	../gevent/Core/Determinism/gevent_test03.py	/^import time$/;"	kind:namespace	line:14
+time	../gevent/Core/Spawning_Greenlets/gevent_test004.py	/^import time$/;"	kind:namespace	line:7
+time	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test.py	/^import time$/;"	kind:namespace	line:15
+timeout	../gevent/Core/Timeouts/gevent_test06.py	/^timeout = Timeout(seconds)$/;"	kind:variable	line:22
 timer	../gevent/Core/Timeouts/gevent_test07.py	/^timer = Timeout(1).start()$/;"	kind:variable	line:11
 timer	../gevent/Core/Timeouts/gevent_test07.py	/^timer = Timeout.start_new(1)$/;"	kind:variable	line:21
-wait	../gevent/Core/Timeouts/gevent_test06.py	/^def wait():$/;"	kind:function	line:24
+urllib2	../gevent/Core/Synchronous_Asynchronous_Execution/gevent_test02.py	/^import urllib2$/;"	kind:namespace	line:20
+wait	../gevent/Core/Timeouts/gevent_test06.py	/^def wait():$/;"	kind:function	line:25
 wait	../gevent/Core/Timeouts/gevent_test07.py	/^def wait():$/;"	kind:function	line:8
+wait_read	../gevent/Data_Structures/Subprocess/subprocess02.py	/^from gevent.socket import wait_read, wait_write$/;"	kind:namespace	line:8
+wait_write	../gevent/Data_Structures/Subprocess/subprocess02.py	/^from gevent.socket import wait_read, wait_write$/;"	kind:namespace	line:8
 waiter	../gevent/Data_Structures/Event/gevent_test09.py	/^def waiter():$/;"	kind:function	line:23
 waiter	../gevent/Data_Structures/Event/gevent_test10.py	/^def waiter():$/;"	kind:function	line:16
 win	../gevent/Core/Greenlet_State/gevent_test05.py	/^def win():$/;"	kind:function	line:15
 winner	../gevent/Core/Greenlet_State/gevent_test05.py	/^winner = gevent.spawn(win)$/;"	kind:variable	line:23
-worker	../gevent/Data_Structures/Queue/gevent_test11.py	/^def worker(name):$/;"	kind:function	line:10
-worker	../gevent/Data_Structures/Queue/gevent_test12.py	/^def worker(n):$/;"	kind:function	line:10
+worker	../gevent/Data_Structures/Queue/gevent_queue01.py	/^def worker(name):$/;"	kind:function	line:10
+worker	../gevent/Data_Structures/Queue/gevent_queue02.py	/^def worker(n):$/;"	kind:function	line:10
+worker1	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^def worker1(n):$/;"	kind:function	line:15
+worker2	../gevent/Data_Structures/Locks_and_Semaphores/semaphores.py	/^def worker2(n):$/;"	kind:function	line:23
