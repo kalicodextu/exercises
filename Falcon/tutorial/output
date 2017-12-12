@@ -1,0 +1,4 @@
+{
+    "title": "Bad request",
+    "description": "Image type not allowed. Must be PNG, JPEG or GIF"
+}
