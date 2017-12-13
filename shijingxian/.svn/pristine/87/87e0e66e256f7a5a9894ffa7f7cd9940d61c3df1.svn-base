@@ -1,6 +1,0 @@
-client:
-    host : www.dacdy.com
-    user : admin
-    password : 123456
-    db : configData
-

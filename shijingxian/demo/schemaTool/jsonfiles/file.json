@@ -1,9 +1,0 @@
-{
-    "schema_guardians_post_1" : {"$schema": "http://json-schema.org/schema#"},
-    "schema_name_11": {"$schema": "http://json-schema.org/schema#"},
-    "schema_name_21" : {"$schema": "http://json-schema.org/schema#"},
-
-    "schema_name_22" : {"$schema": "http://json-schema.org/schema#"},
-
-    "schema_name_22" : {"$schema": "http://json-schema.org/schema#"}
-}
