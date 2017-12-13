@@ -1,0 +1,2 @@
+Linux command 在熟悉中
+Vim 支持python3 不支持python2

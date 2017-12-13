@@ -1,0 +1,7 @@
+client:
+    host : localhost
+    user : admin
+    password : 123456
+    db : sendJson
+
+rest_api_port : 10021
