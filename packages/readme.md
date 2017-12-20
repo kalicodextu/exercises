@@ -1,0 +1,43 @@
+## packages
+
+* crypto==1.4.1
+* falcon==0.3.0
+* falcon-multipart==0.2.0
+* functools32==3.2.3.post2
+* gevent==1.0.2
+* graphene==1.4
+* graphql-core==1.1
+* graphql-relay==0.4.5
+* greenlet==0.4.12
+* isodate==0.5.4
+* jsonschema==2.5.1
+* msgpack-python==0.4.8
+* Naked==0.1.31
+* olefile==0.44
+* Pillow==3.0.0
+* post==0.0.0
+* promise==2.0.2
+* public==0.0.0
+* py==1.4.34
+* pycrypto==2.6.1
+* PyJWT==1.4.0
+* pymongo==3.4.0
+* pytest==3.1.3
+* python-mimeparse==1.6.0
+* PyYAML==3.11
+* pyzmq==16.0.2
+* query-string==0.0.0
+* redis==2.10.5
+* request==0.0.0
+* requests==2.8.1
+* setupfiles==0.0.50
+* shellescape==3.4.1
+* six==1.10.0
+* transitions==0.6.1
+* typing==3.6.1
+* umsgpack==0.1.0
+* urllib3==1.22
+* ws4py==0.3.4
+* zmq==0.0.0
+
+
