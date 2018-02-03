@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+API_ALL	test_api/api_uri/api_uri.py	/^API_ALL = {$/;"	v
+DATA_SUPERVISOR_RESETPASSWORD	test_api/input_base.py	/^DATA_SUPERVISOR_RESETPASSWORD = load($/;"	v
+DATA_SUPERVISOR_SESSION	test_api/input_base.py	/^DATA_SUPERVISOR_SESSION = load(open('.\/data\/supervisor\/session.json', 'r'))$/;"	v
+DATA_SUPERVISOR_SMS	test_api/input_base.py	/^DATA_SUPERVISOR_SMS = {$/;"	v
+DATA_SUPERVISOR_SUPERVISORID_BINDMOBILE	test_api/input_base.py	/^DATA_SUPERVISOR_SUPERVISORID_BINDMOBILE = load($/;"	v
+DATA_SUPERVISOR_SUPERVISORID_CHANGEPASSWORD	test_api/input_base.py	/^DATA_SUPERVISOR_SUPERVISORID_CHANGEPASSWORD = load($/;"	v
+DATA_SUPERVISOR_SUPERVISORID_CREATEWORKER	test_api/input_base.py	/^DATA_SUPERVISOR_SUPERVISORID_CREATEWORKER = load($/;"	v
+DATA_SUPERVISOR_SUPERVISORID_RELEASEMOBILE	test_api/input_base.py	/^DATA_SUPERVISOR_SUPERVISORID_RELEASEMOBILE = load($/;"	v
+DATA_SUPERVISOR_SUPERVISORID_SMS	test_api/input_base.py	/^DATA_SUPERVISOR_SUPERVISORID_SMS = load($/;"	v
+DATA_TOKEN	test_api/input_base.py	/^DATA_TOKEN = load(open('.\/data\/supervisor\/token.json'))$/;"	v
+TestSupervisorResetpassword	test_api/test_supervisor.py	/^class TestSupervisorResetpassword(TestSupervisorSms):$/;"	c
+TestSupervisorSession	test_api/test_supervisor.py	/^class TestSupervisorSession(object):$/;"	c
+TestSupervisorSms	test_api/test_supervisor.py	/^class TestSupervisorSms(object):$/;"	c
+TestSupervisorSupervisirIdSms	test_api/test_supervisor.py	/^class TestSupervisorSupervisirIdSms(TestSupervisorSession):$/;"	c
+TestSupervosor	test_api/test_supervisor.py	/^class TestSupervosor   $/;"	c
+URL_SUPERVISOR_RESETPASSWORD	test_api/input_base.py	/^URL_SUPERVISOR_RESETPASSWORD = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/reset-password'$/;"	v
+URL_SUPERVISOR_SESSION	test_api/input_base.py	/^URL_SUPERVISOR_SESSION = 'http:\/\/api.dacdy.com\/authorization\/supervisor-sessions'$/;"	v
+URL_SUPERVISOR_SMS	test_api/input_base.py	/^URL_SUPERVISOR_SMS = 'htpp:\/\/api.dacdy.com\/authorization\/supervisors\/sms'$/;"	v
+URL_SUPERVISOR_SUPERVISORID_BINDMOBILE	test_api/input_base.py	/^URL_SUPERVISOR_SUPERVISORID_BINDMOBILE = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/' + supervisorId + '\/bind-mobile'$/;"	v
+URL_SUPERVISOR_SUPERVISORID_CHANGEPASSWORD	test_api/input_base.py	/^URL_SUPERVISOR_SUPERVISORID_CHANGEPASSWORD = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/' + supervisorId + '\/change-password'$/;"	v
+URL_SUPERVISOR_SUPERVISORID_CREATEWORKER	test_api/input_base.py	/^URL_SUPERVISOR_SUPERVISORID_CREATEWORKER = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/' + supervisorId + '\/create-worker'$/;"	v
+URL_SUPERVISOR_SUPERVISORID_MAINTAINWORKER	test_api/input_base.py	/^URL_SUPERVISOR_SUPERVISORID_MAINTAINWORKER = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/' + supervisorId + '\/maintian-worker\/' + workerId$/;"	v
+URL_SUPERVISOR_SUPERVISORID_RELEASEMOBILE	test_api/input_base.py	/^URL_SUPERVISOR_SUPERVISORID_RELEASEMOBILE = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/' + supervisorId + '\/release-mobile'$/;"	v
+URL_SUPERVISOR_SUPERVISORID_SMS	test_api/input_base.py	/^URL_SUPERVISOR_SUPERVISORID_SMS = 'http:\/\/api.dacdy.com\/authorization\/supervisors\/' + supervisorId + '\/sms'$/;"	v
+supervisorId	test_api/input_base.py	/^supervisorId = '5a24c7107d3b0d1c18cdc729'$/;"	v
+supervisors	test_api/api_uri/api_uri.py	/^supervisors = '\/authorization\/supervisors\/'$/;"	v
+test_supervisor_bindmobile_sms	test_api/test_supervisor.py	/^    def test_supervisor_bindmobile_sms(self):     $/;"	m	class:TestSupervisorSms
+test_supervisor_resetpassword	test_api/test_supervisor.py	/^    def test_supervisor_resetpassword(self, test_spuervisor_resetpassword_sms):$/;"	m	class:TestSupervisorResetpassword
+test_supervisor_resetpassword_sms	test_api/test_supervisor.py	/^    def test_supervisor_resetpassword_sms(self):     $/;"	m	class:TestSupervisorSms
+test_supervisor_supervisorid_changepassword_sms	test_api/test_supervisor.py	/^    def test_supervisor_supervisorid_changepassword_sms(self, test_supervisor_session):$/;"	m	class:TestSupervisorSupervisirIdSms
+test_supervisorsession_post	test_api/test_supervisor.py	/^    def test_supervisorsession_post(self):$/;"	m	class:TestSupervisorSession
+workerId	test_api/input_base.py	/^workerId = '5a2e32276a7aba0001f56291'$/;"	v

@@ -1,0 +1,4 @@
+{
+  "test_guardian.py::TestGuardianSession::()::test_login_with_mobile_pswd": true, 
+  "test_guardian.py::TestGuardianSession::()::test_login_with_mobile_smscode": true
+}
