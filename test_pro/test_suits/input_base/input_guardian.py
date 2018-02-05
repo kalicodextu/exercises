@@ -12,6 +12,7 @@ TOKEN_ALG = config.get('encryption').get('algorithm')
 
 
 HOST = 'http://localhost:20001'
+GUARDIANID = '596746f4a97daa4f26fba35d'
 
 ### guardian-sms
 #url 
@@ -50,3 +51,16 @@ GUARDIAN_SESSIONS_MOBILE_SMSCODE_VALID_DATA = load(
 # valid data: wechatid
 GUARDIAN_SESSIONS_WECHATID_VALID_DATA = load(
         open('./data/guardian/authorization/input/guardian_sessions/wechatId/valid/login.json'))
+
+
+### guardian--guardianId-sms
+
+# url
+GUARDIAN_GUARDIANID_SMS_URL = HOST + '/authorization/guardians/' + GUARDIANID + '/sms'
+
+# valid data: mobile-release
+GUARDIAN_GUARDIANID_SMS_MOBILERELEASE_VALID_DATA = load(
+        open('./data/guardian/authorization/input/guardians_guardianId_sms/mobile_releasing/valid/sms.json'))
+# valid data: change-password
+GUARDIAN_GUARDIANID_SMS_CHANGEPASSWORD_VALID_DATA = load(
+        open('./data/guardian/authorization/input/guardians_guardianId_sms/change_password/valid/sms.json'))

@@ -6,7 +6,7 @@ from input_base import *
 
 
 @pytest.fixture(scope='module')
-def test_supervisor_session():
+def test_supervisor_session(self):
     ''' supervisor log-in
         success: status_code 201
         return : token, supervisorId
@@ -48,7 +48,7 @@ class TestSupervisorSupervisirIdSms():
     def test_supervisor_supervisorid_changepassword_sms(
             self, test_supervisor_session):
         token, supervisor_id = test_supervisor_session
-        headers = {'authorization': 'Authorization Bearer' + token}
+        headers = {'authorization': 'Bearer ' + token}
         r = requests.post(
             URL_SUPERVISOR_SUPERVISORID_SMS,
             headers=headers,
@@ -62,7 +62,7 @@ class TestSupervisorSupervisirIdSms():
     def test_supervisor_supervisorid_releasemobile_sms(
             self, test_supervisor_session):
         token, supervisor_id = test_supervisor_session
-        headers = {'authorization': 'Authorization Bearer' + token}
+        headers = {'authorization': 'Bearer ' + token}
         r = requests.post(
             URL_SUPERVISOR_SUPERVISORID_SMS,
             headers=headers,
@@ -90,7 +90,7 @@ class TestSupervosorBindmobile(TestSupervisorSupervisirIdSms):
             self, test_supervisor_session, test_supervisor_bindmobile_sms):
         token, supervisor_id = test_supervisor_session
         uuid = test_supervisor_bindmobile_sms
-        headers = {'authorization', 'Authorization Bearer' + token}
+        headers = {'authorization', 'Bearer ' + token}
         r = requests.post(
             URL_SUPERVISOR_SUPERVISORID_BINDMOBILE,
             headers=headers,
@@ -106,7 +106,7 @@ class TestSupervisorChangepassword(TestSupervisorSupervisirIdSms):
     def test_supervisor_supervisorid_changepassword(
             self, test_supervisor_supervisorid_changepassword_sms):
         token, uuid = test_supervisor_supervisorid_changepassword_sms
-        headers = {'authorization', 'Authorization Bearer' + token}
+        headers = {'authorization', 'Bearer ' + token}
         r = requests.post(
             URL_SUPERVISOR_SUPERVISORID_CHANGEPASSWORD,
             headers=headers,
@@ -122,7 +122,7 @@ class TestSUpervisorReleaseMobile(TestSupervisorSupervisirIdSms):
     def test_supervisor_supervisorid_releasemobile(
             self, test_supervisor_supervisorid_releasemobile_sms):
         token, uuid = test_supervisor_supervisorid_releasemobile_sms
-        headers = {'authorization', 'Authorization Bearer' + token}
+        headers = {'authorization', 'Bearer ' + token}
         r = requests.post(
             URL_SUPERVISOR_SUPERVISORID_RELEASEMOBILE,
             headers=headers,
@@ -134,11 +134,11 @@ class TestSUpervisorReleaseMobile(TestSupervisorSupervisirIdSms):
         return supervisor_id
 
 
-class TestSupervisorMaintainwoker():
+class TestSupervisorCreatewoker():
     def test_supervisor_supervisorid_createworker(self,
                                                   test_supervisor_session):
         token, supervisor_id = test_supervisor_session
-        headers = {'authorization', 'Authorization Bearer' + token}
+        headers = {'authorization', 'Bearer ' + token}
         r = requests.post(
             URL_SUPERVISOR_SUPERVISORID_CREATEWORKER,
             headers=headers,
@@ -149,10 +149,12 @@ class TestSupervisorMaintainwoker():
         worker_id = content_dict.get('id')
         return worker_id
 
+
+class TestSupervisorMaintainwoker():
     def test_supervisor_supervisorid_maintainworker(self,
                                                     test_supervisor_session):
         token, supervisor_id = test_supervisor_session
-        headers = {'authorization', 'Authorization Bearer' + token}
+        headers = {'authorization', 'Bearer ' + token}
         r = requests.delete(
             URL_SUPERVISOR_SUPERVISORID_MAINTAINWORKER, headers=headers)
         assert r.status_code == 201
