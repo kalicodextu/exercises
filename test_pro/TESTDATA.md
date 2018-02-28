@@ -100,16 +100,32 @@
     "url" : "/authorization/guardians/sms",
     "input_data" : {
         "valid" : {
-            "mobile": "13333333333", 
-            "uuid": "123455666",
-            "verifyType": {
-                "sign_up": "sign_up",
-                "sign_in": "sign_in",
-                "forget_password": "forget_password",
-                "mobile_binding": "mobile_binding",
-                "wechat_binding": "wechat_binding"
+            "sign_up": {
+                "mobile": "13333333333", 
+                "uuid": "123455666",
+                "verifyType": "sign_up"
+            },
+            "sign_in": {                  
+                "mobile": "13333333333", 
+                "uuid": "123455666",
+                "verifyType": "sign_in"
+            },
+            "forget_password": {                  
+                "mobile": "13333333333", 
+                "uuid": "123455666",
+                "verifyType": "forget_password"
+            },
+            "mobile_binding": {                  
+                "mobile": "13333333333", 
+                "uuid": "123455666",
+                "verifyType": "mobile_binding"
+            },
+            "wechat_binding": {                  
+                "mobile": "13333333333", 
+                "uuid": "123455666",
+                "verifyType": "wechat_binding"
             }
-        },
+        },                           
         "invalid" : {}
     },
     "output_data" : {
@@ -203,14 +219,16 @@
     "url": "/authorization/guardians/guardianId/sms",
     "input_data": {
         "valid": {
-            "verifyType": {
-                "mobile_releasing": "mobile_releasing",
-                "change_password": "change_password"
+            "mobile_releasing": {
+                "verifyType": "mobile_releasing"
+            },
+            "change_password": {
+                "verifyType": "change_password"
             }
         }
     },
     "output_data": {
-     }
+    }
 }
 
 

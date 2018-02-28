@@ -10,7 +10,7 @@ from input_base.input_guardian import *
 from output_base.output_guardian import *
 
 
-class TestGuardianSessionBase(object):
+class TestGuardianSessionBase(TestGuardianSmsBase):
     ''' guardian login can throught 4 ways:
             - name, password
             - mobile, smsCode
@@ -22,7 +22,7 @@ class TestGuardianSessionBase(object):
     def guardian_login_with_name_valid(self):
         # login with name vliad fixtured method
         r = requests.post(
-            GUARDIAN_SESSIONS_URL, json=GUARDIAN_SESSIONS_NAME_VALID_DATA)
+            GUARDIAN_SESSIONS_URL, json=GUARDIAN_SESSIONS_VALID_DATA['name'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
@@ -40,7 +40,7 @@ class TestGuardianSessionBase(object):
         # login with mobile-password vliad fixtured method
         r = requests.post(
             GUARDIAN_SESSIONS_URL,
-            json=GUARDIAN_SESSIONS_MOBILE_PSWD_VALID_DATA)
+            json=GUARDIAN_SESSIONS_VALID_DATA['mobile_password'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
@@ -58,7 +58,7 @@ class TestGuardianSessionBase(object):
         # login with mobile-smscode vliad fixtured method
         r = requests.post(
             GUARDIAN_SESSIONS_URL,
-            json=GUARDIAN_SESSIONS_MOBILE_SMSCODE_VALID_DATA)
+            json=GUARDIAN_SESSIONS_VALID_DATA['mobile_smscode'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
@@ -73,9 +73,9 @@ class TestGuardianSessionBase(object):
 
     @pytest.fixture(scope='class')
     def guardian_login_with_wechatid_valid(self):
-        # login with wechatid vliad fixtured method
+        #  with wechatid vliad fixtured method
         r = requests.post(
-            GUARDIAN_SESSIONS_URL, json=GUARDIAN_SESSIONS_WECHATID_VALID_DATA)
+            GUARDIAN_SESSIONS_URL, json=GUARDIAN_SESSIONS_VALID_DATA['wechatId'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
@@ -88,12 +88,10 @@ class TestGuardianSessionBase(object):
         guardian_mobile = content_dict.get('mobile')
         return login_token, guardian_type, guardian_id, guardian_mobile
 
+
     # TODO
     # guardian login test with invalid input data
-    '''
-    def test_guardian_login_with_name_invalid_schema_01(self):
 
-    '''
 
 
 class TestGuardianSmsBase(object):
@@ -108,7 +106,8 @@ class TestGuardianSmsBase(object):
     @pytest.fixture(scope='class')
     def guardian_sms_signin(self):
         # guardian send smscode request for login with mobile and smscode
-        r = requests.post(GUARDIAN_SMS_URL, json=GUARDIAN_SMS_SIGNIN_DATA)
+        r = requests.post(GUARDIAN_SMS_URL,
+                json=GUARDIAN_SMS_VALID_DATA['sign_in'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('uuid') == True
@@ -118,7 +117,8 @@ class TestGuardianSmsBase(object):
     @pytest.fixture(scope='class')
     def guardian_sms_signup(self):
         # guardian send smscode request for signup
-        r = requests.post(GUARDIAN_SMS_URL, json=GUARDIAN_SMS_SIGNUP_DATA)
+        r = requests.post(GUARDIAN_SMS_URL,
+                json=GUARDIAN_SMS_VALID_DATA['sign_up'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
@@ -128,8 +128,8 @@ class TestGuardianSmsBase(object):
     @pytest.fixture(scope='class')
     def guardian_sms_forgetpassword(self):
         # guardian send smscode request for resetpassword
-        r = requests.post(
-            GUARDIAN_SMS_URL, json=GUARDIAN_SMS_FORGETPASSWORD_DATA)
+        r = requests.post(GUARDIAN_SMS_URL,
+                json=GUARDIAN_SMS_VALID_DATA['forget_password'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key("uuid") == True
@@ -139,7 +139,8 @@ class TestGuardianSmsBase(object):
     @pytest.fixture(scope='class')
     def guardian_sms_mobilebinding(self):
         # guardian send smscode request for resetpassword
-        r = requests.post(GUARDIAN_SMS_URL, json=GUARDIAN_SMS_MOBILE_BINDING)
+        r = requests.post(GUARDIAN_SMS_URL,
+                json=GUARDIAN_SMS_VALID_DATA['mobile_binding'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key("uuid") == True
@@ -149,8 +150,8 @@ class TestGuardianSmsBase(object):
     @pytest.fixture(scope='class')
     def guardian_sms_wechatbinding(self):
         # guardian send smscode request for resetpassword
-        r = requests.post(
-            GUARDIAN_SMS_URL, json=GUARDIAN_SMS_WECHAT_BINDING_DATA)
+        r = requests.post(GUARDIAN_SMS_URL,
+                json=GUARDIAN_SMS_VALID_DATA['wechat_binding'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key("uuid") == True
@@ -173,7 +174,7 @@ class TestGuardianGuardianIdSmsBase(TestGuardianSessionBase):
         r = requests.post(
             GUARDIAN_GUARDIANID_SMS_URL,
             headers=headers,
-            json=GUARDIAN_GUARDIANID_SMS_CHANGEPASSWORD_VALID_DATA)
+            json=GUARDIAN_GUARDIANID_SMS_VALID_DATA['change_password'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('uuid') == True
@@ -189,7 +190,7 @@ class TestGuardianGuardianIdSmsBase(TestGuardianSessionBase):
         r = requests.post(
             GUARDIAN_GUARDIANID_SMS_URL,
             headers=headers,
-            json=GUARDIAN_GUARDIANID_SMS_MOBILERELEASE_VALID_DATA)
+            json=GUARDIAN_GUARDIANID_SMS_VALID_DATA['mobile_releasing'])
         assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('uuid') == True
