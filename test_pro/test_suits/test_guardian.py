@@ -8,6 +8,25 @@ from time import time
 from jwt_base import get_token_payload
 from input_base.input_guardian import *
 from output_base.output_guardian import *
+from dbdriver import *
+
+
+@pytest.fixture(scope='class')
+def setUpBeforeClass(query_object):
+    try:
+        storage = MongoBase()
+        storage.conCollection('TestDB')
+        storage.delDocument(query_object)
+    except:
+        print 'The document not exit, cotinue ...'
+    finally:
+        storage.client.close()
+
+@pytest.fixture(scope='class')
+def tearDownAfterClass():
+    # TODO
+    # teardown func
+    pass
 
 
 class TestGuardianSessionBase(TestGuardianSmsBase):
@@ -196,6 +215,93 @@ class TestGuardianGuardianIdSmsBase(TestGuardianSessionBase):
         assert content_dict.has_key('uuid') == True
         uuid = content_dict.get('uuid')
         return uuid
+
+
+class TestAuthorizationGuadianOne(TestGuardianSmsBase, TestGuardianSessionBase):
+    ''' guardian sign-up with mobile, then make serial test flow:
+            log-in
+            change-name
+            change-password
+            release-mobile
+    '''
+    def setup_class(query_object):
+        try:
+            storage = MongoBase()
+            storage.conCollection('TestDB')
+            storage.delDocument(query_object)
+            print 'clear old document .... ok'
+        except:
+            print 'The document not exit, cotinue ...'
+        finally:
+            storage.client.close()
+
+    def test_signup_with_mobile(self, guardian_sms_signup):
+        r = requests.post(
+                GUARDIAN_GUARDIANS_URL,
+                json=GUARDIAN_GUARDIANS_VALID_DATA['sign_up'])
+        assert r.status_code == 201
+        content_dict = json.loads(r.content)
+        assert content_dict.has_key('id') == True
+        guardianId = content_dict.get('id')
+
+    @pytest.fixture(scope='class')
+    def test_login_with_mobile_password(self,
+            guardian_login_with_mobile_pswd_valid):
+        login_token, guardian_type, guardian_id, guardian_mobile = guardian_login_with_mobile_pswd_valid
+        # TODO
+        # assert return and out
+        #
+        '''
+        assert guardian_mobile == OUTPUT_GUARDIAN_SESSIONS_MOBILE_PSWD_VALID_DATA.get(
+            'mobile')
+        assert guardian_type == OUTPUT_GUARDIAN_SESSIONS_MOBILE_PSWD_VALID_DATA.get(
+            'type')
+        assert guardian_id == OUTPUT_GUARDIAN_SESSIONS_MOBILE_PSWD_VALID_DATA.get(
+            'id')
+        '''
+        payload = get_token_payload(login_token)
+        assert payload.get('exp') > time()
+        return guardian_id, login_token
+
+    def test_change_name(self, test_login_with_mobile_password):
+        guardian_id, login_token = test_login_with_mobile_password
+        headers = {"authorization": "Bearer " + login_token}
+        r = requests.post(
+                GUARDIAN_GUARDIANID_CHANGENAME_URL.replace('guardianId',guardian_id),
+                headers=headers,
+                json=GUARDIAN_GUARDIANID_CHANGENAME_VALID_DATA['new_name'])
+        assert r.status_code == 201
+        content_dict = json.loads(r.content)
+        assert content_dict.has_key('id') == True
+        guardianId = content_dict.get('id')
+        assert guardian_id == guardianId
+        return guardian_id
+
+    def test_change_password(self, test_login_with_mobile_password):
+        guardian_id, login_token = test_login_with_mobile_password
+        headers = {"authorization": "Bearer " + login_token}
+        r = requests.post(
+                GUARDIAN_GUARDIANID_CHANGEPASSWORD_URL.replace('guardianId',guardian_id),
+                headers=headers,
+                json=GUARDIAN_GUARDIANID_CHANGEPASSWORD_VALID_DATAL['new_name'])
+        assert r.status_code == 201
+        content_dict = json.loads(r.content)
+        assert content_dict.has_key('id') == True
+        guardianId = content_dict.get('id')
+        return guardianId
+
+    def test_release_mobile(self, test_login_with_mobile_password):
+        guardian_id, login_token = test_login_with_mobile_password
+        headers = {"authorization": "Bearer " + login_token}
+        r = requests.post(
+                GUARDIAN_GUARDIANID_CHANGEPASSWORD_URL.replace('guardianId',guardian_id),
+                headers=headers,
+                json=GUARDIAN_GUARDIANID_CHANGEPASSWORD_VALID_DATAL['new_name'])
+        assert r.status_code == 201
+        content_dict = json.loads(r.content)
+        assert content_dict.has_key('id') == True
+        guardianId = content_dict.get('id')
+        return guardianId
 
 '''
 class TestGuardianSession(TestGuardianSessionBase):

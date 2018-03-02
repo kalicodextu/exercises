@@ -161,10 +161,10 @@
     "url": "/authorization/guardians/guardianId/change-name",
     "input_data": {
         "valid": {
-            "name":{
-                "new_name": "testNewName",
-                "origin_name": "testguardian"
-            }
+            "new_name": {
+                "name": "testNewName"},
+            "origin_name":{
+                "name": "testguardian"}
         }
     }
 }

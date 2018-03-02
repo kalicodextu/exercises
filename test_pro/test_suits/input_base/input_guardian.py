@@ -27,7 +27,7 @@ storage.getData('url')
 GUARDIAN_GUARDIANS_URL = HOST + storage.data
 
 storage.getData('input_data')
-GUARDIAN_GUADIANS_VALID_DATA = storage.data['valid']
+GUARDIAN_GUARDIANS_VALID_DATA = storage.data['valid']
 
 
 # guardian-login

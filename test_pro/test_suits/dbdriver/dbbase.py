@@ -12,7 +12,6 @@ class MongoBase(object):
         except Exception as e:
             raise 'conCollection: ' + str(e)
             
-
     def getDocument(self, query_object):
         try:
             self.document = self.collection.find_one(query_object)
@@ -25,3 +24,8 @@ class MongoBase(object):
         except Exception as e:
             raise 'getData: ' + str(e)
         
+    def delDocument(self, query_object):
+        try:
+            self.collection.remove_one(query_object)
+        except Exception as e:
+            raise 'delDocument: ' + str(e) 
