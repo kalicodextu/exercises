@@ -1,3 +1,4 @@
+# guardian
 * guardian-session (login)
 
 ``` python
@@ -10,8 +11,8 @@
                 "password" : "123456",
                 "mobile" : "13333333333"
             },
-            "mobile_smscode" : {
-                "smscode" : "1609",
+            "mobile_smsCode" : {
+                "smsCode" : "1609",
                 "mobile" : "13333333333"
             },
             "name" : {
@@ -25,7 +26,9 @@
         "invalid" : {}
     },
     "output_data" : {
-        "type" : "org"
+        "type" : "family",
+        "name" : "testguardian",
+        "mobile": "13333333333"
     }
 }
 ```
@@ -41,21 +44,20 @@
             "mobile" : {
                 "password" : "123456",
                 "mobile" : "13333333333",
-                "smscode": "1609",
-                "type": "org"
+                "smsCode": "1609",
+                "type": "family"
             },
             "name" : {
                 "name" : "testguardian",
                 "password" : "123456",
                 "imgCode": "temp",
-                "type": "org",
+                "type": "family",
                 "uuid": "123455666"
             },
         },
         "invalid" : {}
-    }{
-    
-}
+    },
+    "output_data" : {}
 }
 ```
 
@@ -81,7 +83,7 @@
     "input_data": {
         "valid": {
             "mobile": "13333333333",
-            "smscode": "1609",
+            "smsCode": "1609",
             "newPassword": "123456789"
         },
         "invalid": {
@@ -147,9 +149,7 @@
         },
         "invalid" : {}
     },
-    "output_data" : {
-        "uuid" : "123455666"
-    }
+    "output_data" : {}
 }
 ```
 
@@ -161,12 +161,10 @@
     "url": "/authorization/guardians/guardianId/change-name",
     "input_data": {
         "valid": {
-            "new_name": {
-                "name": "testNewName"},
-            "origin_name":{
-                "name": "testguardian"}
+            "name": "testguardian"
         }
-    }
+    },
+    "output_data": {}
 }
 ```
 
@@ -180,15 +178,18 @@
         "valid": {
             "new":{
                 "newPassword": "123456789",
-                "oldPassword": "123456"
+                "oldPassword": "123456",
+                "smsCode": "1609"
             },
             "origin":{
                 "newPassword": "123456",
-                "oldPassword": "12345678"
+                "oldPassword": "12345678",
+                "smsCode": "1609"
             }
         },
         "invalid":{}
-    }
+    },
+    "output_data": {}
 
 }
 ```
@@ -230,5 +231,48 @@
     "output_data": {
     }
 }
+```
 
+# imgcode
 
+* image-code
+
+``` python
+{
+    "name": "image-code",
+    "url": "/authorization/image-code",
+    "input_data": {
+        "valid": {
+            "sign_up": {
+                "verifyType": "sign_up",
+                "uuid": "123455666"
+            },
+            "sign_in": {
+                "verifyType": "sign_in",
+                "uuid": "123455666"
+            },
+            "release_block_address": {
+                "verifyType": "release_block_address",
+                "uuid": "123455666"
+            }
+        }
+    }
+}
+```
+
+* image/uuid
+``` python
+{
+    "name": "imgcode-uuid",
+    "url": "/authorization/image-code/uuid",
+    "input_data": {
+        "valid": {
+            "imgCode": "FAKE"
+        },
+        "invalid": {
+            "imgCode": "FAKE"
+        }
+    },
+    "output_data": {}
+}
+```

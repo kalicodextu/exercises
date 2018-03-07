@@ -4,28 +4,34 @@ from pymongo import MongoClient
 class MongoBase(object):
     def __init__(self):
         self.client =  MongoClient('mongodb://localhost:27017/')
-        self.db = self.client['TestDB']
+
+    def switchDatabase(self, db_name):
+        self.database = self.client[db_name]
          
     def conCollection(self, collection_name):
         try:
-            self.collection = self.db[collection_name]
+            self.collection = self.database[collection_name]
         except Exception as e:
-            raise 'conCollection: ' + str(e)
+            print 'conCollection: ' + str(e)
+            raise e
             
     def getDocument(self, query_object):
         try:
             self.document = self.collection.find_one(query_object)
         except Exception as e:
-            raise 'getDocument: ' + str(e)
+            print 'getDocument: ' + str(e)
+            raise e
 
     def getData(self, query_key):
         try:
             self.data = self.document[query_key]
         except Exception as e:
-            raise 'getData: ' + str(e)
+            print 'getData: ' + str(e)
+            raise e
         
     def delDocument(self, query_object):
         try:
-            self.collection.remove_one(query_object)
+            self.collection.remove(query_object)
         except Exception as e:
-            raise 'delDocument: ' + str(e) 
+            print 'delDocument: ' + str(e) 
+            raise e

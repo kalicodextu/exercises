@@ -1,17 +1,26 @@
 from json import dump, load
+from dbdriver import *
 
 HOST = 'http://localhost:20001'
 
-IMAGE_CODE_URL = HOST + '/authorization/image-code'
+storage = MongoBase()
+storage.switchDatabase('TestDB')
+storage.conCollection('imgcode')
 
-IMAGE_CODE_DATA = {
-    "SIGN_UP":
-    load(open('./data/imgcode/image_code/sign_up/valid/imgcode.json')),
-    "SIGN_IN":
-    load(open('./data/imgcode/image_code/sign_in/valid/imgcode.json')),
-    "RELEASE_BLOCK_ADDRESS":
-    load(
-        open(
-            './data/imgcode/image_code/release_block_address/valid/imgcode.json'
-        ))
-}
+
+# imagecode -- create imagecode
+storage.getDocument({'name': 'imagecode'})
+storage.getData('url')
+IMGCODE_URL = HOST + storage.data
+
+storage.getData('input_data')
+IMGCODE_VALID_DATA = storage.data['valid']
+
+
+# imagecode-uuid -- imgcode vertify 
+storage.getDocument({'name': 'imgcode-uuid'})
+storage.getData('url')
+IMGCODE_UUID_URL = HOST + storage.data
+
+storage.getData('input_data')
+IMGCODE_UUID_VALID_DATA = storage.data['valid']
