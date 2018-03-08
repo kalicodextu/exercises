@@ -24,7 +24,7 @@ class TestGuardianSmsBase(object):
             - wechat binding
     '''
     def setup_method(self):
-        db_redis = Redis(host='localhost', port=6379,db=0)        
+        db_redis = Redis(host='localhost', port=6379,db=0)
         interval_cache_key = 'send_interval:' + SMS_GUARDIAN_MOBILE
         perday_cache_key = 'phone_send_per_day:' + SMS_GUARDIAN_MOBILE
         bRet1 = db_redis.delete(interval_cache_key)
@@ -48,6 +48,7 @@ class TestGuardianSmsBase(object):
         r = requests.post(GUARDIAN_SMS_URL,
                 json=GUARDIAN_SMS_VALID_DATA['sign_up'])
         assert r.status_code == 200
+        print r.content
         content_dict = json.loads(r.content)
         assert content_dict.has_key('uuid') == True
         uuid = content_dict.get('uuid')
@@ -174,12 +175,12 @@ class TestGuardianSessionBase(TestGuardianSmsBase):
 
 class TestGuardianGuardianIdSmsBase(TestGuardianSessionBase):
     '''
-    2 kinds smscode with status of login 
+    2 kinds smscode with status of login
             - change pasword
             - mobile release
     '''
     def setup_method(self):
-        db_redis = Redis(host='localhost', port=6379,db=0)        
+        db_redis = Redis(host='localhost', port=6379,db=0)
         interval_cache_key = 'send_interval:' + SMS_GUARDIAN_MOBILE
         perday_cache_key = 'phone_send_per_day:' + SMS_GUARDIAN_MOBILE
         bRet1 = db_redis.delete(interval_cache_key)
@@ -198,7 +199,6 @@ class TestGuardianGuardianIdSmsBase(TestGuardianSessionBase):
             GUARDIAN_GUARDIANID_SMS_URL_TEMP,
             headers=headers,
             json=GUARDIAN_GUARDIANID_SMS_VALID_DATA['change_password'])
-        print r.content
         assert r.status_code == 200
         content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
@@ -312,13 +312,13 @@ class TestAuthorizationGuadianOne(TestGuardianGuardianIdSmsBase):
                 GUARDIAN_GUARDIANID_CHANGEPASSWORD_URL.replace('guardianId',guardian_id),
                 headers=headers,
                 json=GUARDIAN_GUARDIANID_CHANGEPASSWORD_VALID_DATA['new'])
-        print r.content 
+        print r.content
         assert r.status_code == 200
         content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
         guardianId = content_dict.get('id')
         return guardianId
-    
+
 
 class TestAuthorizationGuadianTwo(TestImgCode, TestGuardianGuardianIdSmsBase):
     ''' guardian sign-up with name, then make serial test flow:
@@ -416,7 +416,7 @@ class TestAuthorizationGuadianTwo(TestImgCode, TestGuardianGuardianIdSmsBase):
         payload = get_token_payload(login_token)
         assert payload.get('exp') > time()
         return guardian_id, login_token
-       
+
     def test_login_with_mobile_smscode(self, guardian_login_with_mobile_smscode_valid):
         login_token, guardian_type, guardian_id, guardian_mobile = guardian_login_with_mobile_smscode_valid
 
@@ -428,7 +428,7 @@ class TestAuthorizationGuadianTwo(TestImgCode, TestGuardianGuardianIdSmsBase):
         payload = get_token_payload(login_token)
         assert payload.get('exp') > time()
         return guardian_id, login_token
-       
+
     def test_release_mobile(self, test_login_with_name_password, guardian_guardianId_sms_mobilereleasing):
         guardian_id, login_token = test_login_with_name_password
         headers = {"authorization": "Bearer " + login_token}

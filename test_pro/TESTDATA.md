@@ -87,7 +87,7 @@
             "newPassword": "123456789"
         },
         "invalid": {
-            
+
         }
     },
     "output_data": {}
@@ -103,31 +103,31 @@
     "input_data" : {
         "valid" : {
             "sign_up": {
-                "mobile": "13333333333", 
+                "mobile": "13333333333",
                 "uuid": "123455666",
                 "verifyType": "sign_up"
             },
-            "sign_in": {                  
-                "mobile": "13333333333", 
+            "sign_in": {
+                "mobile": "13333333333",
                 "uuid": "123455666",
                 "verifyType": "sign_in"
             },
-            "forget_password": {                  
-                "mobile": "13333333333", 
+            "forget_password": {
+                "mobile": "13333333333",
                 "uuid": "123455666",
                 "verifyType": "forget_password"
             },
-            "mobile_binding": {                  
-                "mobile": "13333333333", 
+            "mobile_binding": {
+                "mobile": "13333333333",
                 "uuid": "123455666",
                 "verifyType": "mobile_binding"
             },
-            "wechat_binding": {                  
-                "mobile": "13333333333", 
+            "wechat_binding": {
+                "mobile": "13333333333",
                 "uuid": "123455666",
                 "verifyType": "wechat_binding"
             }
-        },                           
+        },
         "invalid" : {}
     },
     "output_data" : {
@@ -144,7 +144,7 @@
     "url" : "/authorization/guardians/guardianId/bind-mobile",
     "input_data" : {
         "valid" : {
-            "mobile": "13333333333", 
+            "mobile": "13333333333",
             "smsCode": "1609"
         },
         "invalid" : {}
@@ -202,7 +202,7 @@
     "url": "/authorization/guardians/guardianId/release-mobile",
     "input_data": {
         "valid": {
-            "smsCode": "1609"    
+            "smsCode": "1609"
         },
         "invalid":{
             "smsCode": "Fake"

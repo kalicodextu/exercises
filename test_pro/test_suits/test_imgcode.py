@@ -9,8 +9,8 @@ from input_base.input_imgcode import *
 class TestImgCode(object):
     @pytest.fixture(scope='class')
     def connect_redis_db(self):
-        db = Redis(host='localhost', port=6379,db=0)   
-        return db 
+        db = Redis(host='localhost', port=6379,db=0)
+        return db
 
     @pytest.fixture(scope='class')
     def test_imgcode_signup(self, connect_redis_db):
@@ -23,10 +23,10 @@ class TestImgCode(object):
         db = connect_redis_db
         signup_key = uuid + ':sign_up_verify:'
         assert (signup_key in db.keys()) == True
-        return uuid, db.get(signup_key)  
-    
+        return uuid, db.get(signup_key)
+
     @pytest.fixture(scope='class')
-    def test_imgcode_signin(self, connect_redis_db):  
+    def test_imgcode_signin(self, connect_redis_db):
         image_code = IMGCODE_VALID_DATA.get('sign_in')
         uuid = image_code.get('uuid')
         r = requests.post(
@@ -36,8 +36,8 @@ class TestImgCode(object):
         db = connect_redis_db
         signin_key = uuid + ':sign_in_verify:'
         assert (signup_key in db.keys()) == True
-        return uuid, db.get(signin_key) 
-    
+        return uuid, db.get(signin_key)
+
     @pytest.fixture(scope='class')
     def test_imgcode_release_block_address(self, connect_redis_db):
         image_code = IMGCODE_VALID_DATA.get('RELEASE_BLOCK_ADDRESS')
@@ -49,8 +49,8 @@ class TestImgCode(object):
         db = connect_redis_db
         release_block_address_key = uuid + ':release_block_address'
         assert (signup_key in db.keys()) == True
-        return uuid, db.get(signin_key) 
-    
+        return uuid, db.get(signin_key)
+
     @pytest.fixture(scope='class')
     def test_imgae_code_vertify(self, test_imgcode_release_block_address):
         uuid, image_code = test_imgcode_release_block_address
@@ -66,4 +66,3 @@ class TestImgCode(object):
         _id = content_dict.get('id')
         assert uuid == _id
 
-        
