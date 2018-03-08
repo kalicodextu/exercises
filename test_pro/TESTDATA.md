@@ -276,3 +276,197 @@
     "output_data": {}
 }
 ```
+
+# supervisor
+
+* supervisor-sessions
+
+``` python
+{
+    "name" : "supervisor-session",
+    "url" : "/authorization/supervisor-sessions",
+    "input_data" : {
+        "valid" : {
+            "mobile" : {
+                "mobile" : "13355555555",
+                "password" : "123456"
+            },
+            "name" : {
+                "name" : "testsupervisor",
+                "password" : "123456"
+            }
+        },
+        "invalid" : {}
+    },
+    "output_data" : {
+        "type" : "supervisor",
+        "name" : "testsupervisor",
+        "mobile" : "13355555555"
+    }
+}
+```
+
+* supervisor-reset-password
+
+``` python
+{
+    "name" : "supervisor-reset-password",
+    "url" : "/authrozation/supervisors/reset-password",
+    "input_data" : {
+        "valid" : {
+            "mobile" : "13355555555",
+            "smsCode" : "1609",
+            "newPassword" : "123456789"
+        },
+        "invalid" : {}
+    },
+    "output_data" : {}
+}
+```
+
+* supervisors-sms
+``` python
+{
+    "name" : "supervisors-sms",
+    "url" : "/authorization/supervisors/sms",
+    "input_data" : {
+        "valid" : {
+            "reset_password" : {
+                "mobile" : "13355555555",
+                "uuid" : "123455666",
+                "verifyType" : "supervisor_reset_password"
+            },
+            "bind_mobile" : {
+                "mobile" : "13333333333",
+                "uuid" : "123455666",
+                "verifyType" : "supervisor_bind_mobile"
+            }
+        },
+        "invalid" : {}
+    },
+    "output_data" : {
+        "uuid" : "123455666"
+    }
+}
+```
+
+* supervisors-bind-mobile
+``` python
+{
+    "name" : "supervisors-bind-mobile",
+    "url" : "/authorization/supervisors/supervisorId/bind-mobile",
+    "input_data" : {
+        "valid" : {
+            "mobile" : "13355555555",
+            "smsCode" : "1609"
+        },
+        "invalid" : {}
+    },
+    "output_data" : {}
+}
+```
+
+* supervisor-change-name
+``` python
+{
+    "name" : "supervisors-change-name",
+    "url" : "/authorization/supervisors/supervisorId/change-name",
+    "input_data" : {
+        "valid" : {
+            "name" : "testsupervisor"
+        },
+        "invalid" : {}
+    },
+    "output_data" : {}  
+}
+```
+
+* supervisors-change-password
+``` python
+{
+    "name" : "supervisors-change-password",
+    "url" : "/authorization/supervisors/supervisorId/change-password",
+    "input_data" : {
+        "valid" : {
+            "new" : {
+                "newPassword" : "123456789",
+                "oldPassword" : "123456",
+                "smsCode" : "1609"
+            },
+            "origin" : {
+                "newPassword" : "123456",
+                "oldPassword" : "123456789",
+                "smsCode" : "1609"
+            }
+        },
+        "invalid" : {}
+    },
+    "output_data" : {}
+}
+```
+
+* supervisors-release-mobile
+``` python
+{
+    "name" : "supervisors-release-mobile",
+    "url" : "/authorization/supervisors/supervisorId/release-mobile",
+    "input_data" : {
+        "valid" : {
+            "smsCode" : "1609"
+        },
+        "invalid" : {
+            "smsCode" : "Fake"
+        }
+    },
+    "output_data" : {}
+}
+```
+
+* supervisors-supervisorId-sms 
+``` python
+{
+    "name" : "supervisors-supervisorId-sms",
+    "url" : "/authorization/supervisors/supervisorId/sms",
+    "input_data" : {
+        "valid" : {
+            "mobile_releasing" : {
+                "verifyType" : "supervisor_release_mobile"
+            },
+            "change_password" : {
+                "verifyType" : "supervisor_change_password"
+            }
+        }
+    },
+    "output_data" : {}
+}
+```
+
+* supervisors-create-worker
+``` python
+{
+    "name" : "supervisors-create-worker",
+    "url" : "/authorization/supervisors/supervisorId/create-worker",
+    "input_data" : {
+        "valid" : {
+            "mobile" : "13388888888",
+            "password" : "123456",
+            "type" : "worker"
+        },
+        "invalid" : {}
+    },
+    "output_data" : {}
+}
+```
+
+* supervisors-maintain-worker
+``` python
+{
+    "name" : "supervisors-maintain-worker",
+    "url" : "/authorization/supervisors/supervisorId/maintain-worker/workerId",
+    "input_data" : {
+        "valid" : {},
+        "invalid" : {}
+    },
+    "output_data" : {}
+}
+```
