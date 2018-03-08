@@ -1,22 +1,18 @@
 import requests
 import pytest
 import json
-import yaml
-import jwt
 
 from time import time
 from jwt_base import get_token_payload
 from input_base.input_guardian import *
-from input_base.input_sms import *
-from output_base.output_guardian import *
+from input_base.input_test_info import *
 from dbdriver import *
 from test_imgcode import TestImgCode
 from redis import Redis
 
 
 class TestGuardianSmsBase(object):
-    '''
-        5 kinds smscode without status of login
+    ''' 5 kinds smscode without auth
             - sign up
             - sign in
             - mobile binding
@@ -25,8 +21,8 @@ class TestGuardianSmsBase(object):
     '''
     def setup_method(self):
         db_redis = Redis(host='localhost', port=6379,db=0)
-        interval_cache_key = 'send_interval:' + SMS_GUARDIAN_MOBILE
-        perday_cache_key = 'phone_send_per_day:' + SMS_GUARDIAN_MOBILE
+        interval_cache_key = 'send_interval:' + INFO_GUARDIAN_MOBILE
+        perday_cache_key = 'phone_send_per_day:' + INFO_GUARDIAN_MOBILE
         bRet1 = db_redis.delete(interval_cache_key)
         bRet2 = db_redis.delete(perday_cache_key)
         return bRet1, bRet2
@@ -174,15 +170,14 @@ class TestGuardianSessionBase(TestGuardianSmsBase):
 
 
 class TestGuardianGuardianIdSmsBase(TestGuardianSessionBase):
-    '''
-    2 kinds smscode with status of login
+    ''' 2 kinds smscode with auth
             - change pasword
             - mobile release
     '''
     def setup_method(self):
         db_redis = Redis(host='localhost', port=6379,db=0)
-        interval_cache_key = 'send_interval:' + SMS_GUARDIAN_MOBILE
-        perday_cache_key = 'phone_send_per_day:' + SMS_GUARDIAN_MOBILE
+        interval_cache_key = 'send_interval:' + INFO_GUARDIAN_MOBILE
+        perday_cache_key = 'phone_send_per_day:' + INFO_GUARDIAN_MOBILE
         bRet1 = db_redis.delete(interval_cache_key)
         bRet2 = db_redis.delete(perday_cache_key)
         return bRet1, bRet2
@@ -233,17 +228,14 @@ class TestAuthorizationGuadianOne(TestGuardianGuardianIdSmsBase):
     '''
     def setup_class(cls):
         try:
+            print '\nsetup_class:'
+            print 'Clear old guardian test document...'
             storage_setup = MongoBase()
-            storage_setup.switchDatabase('TestDB')
-            storage_setup.conCollection('guardian')
-            storage_setup.getDocument({'name': 'guardians'})
-            storage_setup.getData('input_data')
-            signup_data = storage_setup.data['valid'].get('mobile')
-            mobile = signup_data.get('mobile')
-            query_object = {'mobile': mobile}
             storage_setup.switchDatabase('accountManagement')
             storage_setup.conCollection('guardians')
+            query_object = {'mobile': INFO_GUARDIAN_MOBILE}
             storage_setup.delDocument(query_object)
+            print '...ok'
         except:
             print 'The document not exit, cotinue ...'
         finally:
@@ -251,17 +243,14 @@ class TestAuthorizationGuadianOne(TestGuardianGuardianIdSmsBase):
 
     def teardown_class(cls):
         try:
+            print '\nteardown_class:'
+            print 'Clear guardian test document...'
             storage_setup = MongoBase()
-            storage_setup.switchDatabase('TestDB')
-            storage_setup.conCollection('guardian')
-            storage_setup.getDocument({'name': 'guardians'})
-            storage_setup.getData('input_data')
-            signup_data = storage_setup.data['valid'].get('mobile')
-            mobile = signup_data.get('mobile')
-            query_object = {'mobile': mobile}
             storage_setup.switchDatabase('accountManagement')
             storage_setup.conCollection('guardians')
+            query_object = {'mobile': INFO_GUARDIAN_MOBILE}
             storage_setup.delDocument(query_object)
+            print '...ok'
         except:
             print 'The document not exit, cotinue ...'
         finally:
@@ -296,7 +285,6 @@ class TestAuthorizationGuadianOne(TestGuardianGuardianIdSmsBase):
                 GUARDIAN_GUARDIANID_CHANGENAME_URL.replace('guardianId',guardian_id),
                 headers=headers,
                 json=GUARDIAN_GUARDIANID_CHANGENAME_VALID_DATA)
-        print r.content
         assert r.status_code == 200
         content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
@@ -312,7 +300,6 @@ class TestAuthorizationGuadianOne(TestGuardianGuardianIdSmsBase):
                 GUARDIAN_GUARDIANID_CHANGEPASSWORD_URL.replace('guardianId',guardian_id),
                 headers=headers,
                 json=GUARDIAN_GUARDIANID_CHANGEPASSWORD_VALID_DATA['new'])
-        print r.content
         assert r.status_code == 200
         content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
@@ -330,17 +317,14 @@ class TestAuthorizationGuadianTwo(TestImgCode, TestGuardianGuardianIdSmsBase):
     '''
     def setup_class(cls):
         try:
+            print '\nsetup_class:'
+            print 'Clear old guardian test document ...'
             storage_setup = MongoBase()
-            storage_setup.switchDatabase('TestDB')
-            storage_setup.conCollection('guardian')
-            storage_setup.getDocument({'name': 'guardians'})
-            storage_setup.getData('input_data')
-            signup_data = storage_setup.data['valid'].get('name')
-            name = signup_data.get('name')
-            query_object = {'name': name}
             storage_setup.switchDatabase('accountManagement')
             storage_setup.conCollection('guardians')
+            query_object = {'name': INFO_GUARDIAN_NAME}
             storage_setup.delDocument(query_object)
+            print '...ok'
         except Exception as e:
             print 'The document not exit, cotinue ...'
         finally:
@@ -348,17 +332,14 @@ class TestAuthorizationGuadianTwo(TestImgCode, TestGuardianGuardianIdSmsBase):
 
     def teardown_class(cls):
         try:
+            print '\nteardown_class:'
+            print 'Clear guardian test document ...'
             storage_setup = MongoBase()
-            storage_setup.switchDatabase('TestDB')
-            storage_setup.conCollection('guardian')
-            storage_setup.getDocument({'name': 'guardians'})
-            storage_setup.getData('input_data')
-            signup_data = storage_setup.data['valid'].get('name')
-            name = signup_data.get('name')
-            query_object = {'name': name}
             storage_setup.switchDatabase('accountManagement')
             storage_setup.conCollection('guardians')
+            query_object = {'name': INFO_GUARDIAN_NAME}
             storage_setup.delDocument(query_object)
+            print '...ok'
         except Exception as e:
             print 'The document not exit, cotinue ...'
         finally:
@@ -442,3 +423,4 @@ class TestAuthorizationGuadianTwo(TestImgCode, TestGuardianGuardianIdSmsBase):
         guardianId = content_dict.get('id')
         return guardianId
 
+# class TestGateway
