@@ -34,7 +34,7 @@ class TestSupervisorSmsBase(object):
         uuid = content_dict.get('uuid')
         return uuid
 
-    @pytest.fixture(scope='class')                                
+    @pytest.fixture(scope='class')
     def supervisor_sms_bindmobile(self):
         # supervisor send smscode request for resetpassword
         r = requests.post(SUPERVISOR_SMS_URL,
@@ -55,7 +55,7 @@ class TestSupervisorSessionBase(object):
     def supervisor_login_with_name_valid(self):
         r = requests.post(SUPERVISOR_SESSIONS_URL,
                 json=SUPERVISOR_SESSIONS_VALID_DATA['name'])
-        assert r.status_code == 201 
+        assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
         assert content_dict.has_key('type') == True
@@ -66,12 +66,12 @@ class TestSupervisorSessionBase(object):
         supervisor_id = content_dict.get('id')
         supervisor_name = content_dict.get('name')
         return login_token, supervisor_type, supervisor_id, supervisor_name
- 
+
     @pytest.fixture(scope='class')
     def supervisor_login_with_mobile_valid(self):
         r = requests.post(SUPERVISOR_SESSIONS_URL,
                 json=SUPERVISOR_SESSIONS_VALID_DATA['mobile'])
-        assert r.status_code == 201 
+        assert r.status_code == 201
         content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
         assert content_dict.has_key('type') == True
@@ -194,7 +194,7 @@ class TestAuthorizationSupervisor(TestSupervisorSmsBase, TestSupervisorSuperviso
         assert supervisor_mobile == SUPERVISOR_SESSIONS_OUT_DATA.get('mobile')
         payload = get_token_payload(login_token)
         assert payload.get('exp') > time()
-    
+
     def test_change_name(self, supervisor_login_with_mobile_valid):
         login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
         headers = {'authorization': 'Bearer ' + login_token}
@@ -215,7 +215,7 @@ class TestAuthorizationSupervisor(TestSupervisorSmsBase, TestSupervisorSuperviso
         assert supervisor_name == SUPERVISOR_SESSIONS_OUT_DATA.get('name')
         payload = get_token_payload(login_token)
         assert payload.get('exp') > time()
-        
+
 
     def test_release_mobile(self, supervisor_login_with_mobile_valid,
             supervisor_supervisorId_sms_mobilereleasing):
@@ -309,6 +309,10 @@ class TestGatewaySupervisor(TestSupervisorSessionBase):
     def supervisor_profiles(self):
         login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
         headers = {'authorization': 'Bearer ' + login_token}
-        r = requests.post(
+        r = requests.post(GATEWAY_SUPERVISOR_WORKERPERMISSION_URL,
+                headers=headers,
+                json=GATEWAY_SUPERVISOR_WORKERPERMISSION_VALID_DATA,
                 )
+        assert r.status_code == 201
+        content_dict = json.loads(r.content)
 

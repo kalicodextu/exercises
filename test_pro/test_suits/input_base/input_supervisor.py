@@ -145,4 +145,21 @@ GATEWAY_SUPERVISOR_MAINTAINWORKER_VALID_DATA = storage.data['valid']
 storage.getData('output_data')
 GATEWAY_SUPERVISOR_MAINTAINWORKER_OUT_DATA = storage.data
 
-# 
+# supervisor-worker-permissoion
+storage.getDocument({'name': 'geteway-worker-permission'})
+storage.getData('url')
+GETEWAY_SUPERVISOR_WORKERPERMISSION_URL = GATEWAY_HOST + storage.data
+
+storage.getData('input_data')
+GATEWAY_SUPERVISOR_WORKERPERMISSION_VALID_DATA = storage.data['valid']
+storage.getData('output_data')
+GATEWAY_SUPERVISOR_WORKERPERMISSION_OUT_DATA = storage.data
+
+# worker-permissoion-workerId
+supervisor-storage.getDocument({'name': 'geteway-worker-permission'})
+storage.getData('url')
+GETEWAY_SUPERVISOR_WORKERPERMISSION_WORKERID_URL = GATEWAY_HOST + storage.data
+storage.getData('input_data')
+GATEWAY_SUPERVISOR_WORKERPERMISSION_WORKERID_VALID_DATA = storage.data['valid']
+storage.getData('output_data')
+GATEWAY_SUPERVISOR_WORKERPERMISSION_WORKERID_OUT_DATA = storage.data
