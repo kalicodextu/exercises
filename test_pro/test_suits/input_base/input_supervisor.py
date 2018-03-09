@@ -14,12 +14,14 @@ TOKEN_ALG = config.get('encryption').get('algorithm')
 
 
 AUTH_HOST = 'http://localhost:20001'
+GATEWAY_HOST = 'http://localhost:10000'
 
 
 storage = MongoBase()
 storage.switchDatabase('TestDB')
 storage.conCollection('supervisor')
 
+# Authorization
 
 # supervisor-sessions
 storage.getDocument({'name': 'supervisor-sessions'})
@@ -130,3 +132,17 @@ SUPERVISOR_SUPERVISORID_MAINTAINWORKER_VALID_DATA = storage.data['valid']
 storage.getData('output_data')
 SUPERVISOR_SUPERVISORID_MAINTAINWORKER_OUT_DATA = storage.data
 
+
+# Gateway
+
+# maintain-workers (get workers info)
+storage.getDocument({'name': 'gateway-maintain-workers'})
+storage.getData('url')
+GATEWAY_SUPERVISOR_MAINTAINWORKER_URL = GATEWAY_HOST + storage.data
+
+storage.getData('input_data')
+GATEWAY_SUPERVISOR_MAINTAINWORKER_VALID_DATA = storage.data['valid']
+storage.getData('output_data')
+GATEWAY_SUPERVISOR_MAINTAINWORKER_OUT_DATA = storage.data
+
+# 

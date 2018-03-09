@@ -56,7 +56,7 @@ class TestSupervisorSessionBase(object):
         r = requests.post(SUPERVISOR_SESSIONS_URL,
                 json=SUPERVISOR_SESSIONS_VALID_DATA['name'])
         assert r.status_code == 201 
-        content_dict = json.laods(r.content)
+        content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
         assert content_dict.has_key('type') == True
         assert content_dict.has_key('id') == True
@@ -72,7 +72,7 @@ class TestSupervisorSessionBase(object):
         r = requests.post(SUPERVISOR_SESSIONS_URL,
                 json=SUPERVISOR_SESSIONS_VALID_DATA['mobile'])
         assert r.status_code == 201 
-        content_dict = json.laods(r.content)
+        content_dict = json.loads(r.content)
         assert content_dict.has_key('token') == True
         assert content_dict.has_key('type') == True
         assert content_dict.has_key('id') == True
@@ -134,7 +134,7 @@ class TestSupervisorSupervisorIdSmsBase(TestSupervisorSessionBase):
         return _id
 
 
-class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
+class TestAuthorizationSupervisor(TestSupervisorSmsBase, TestSupervisorSupervisorIdSmsBase):
     ''' re-set a supervisor account(mobile-password) at TestDB, test as flow:
             - reset password
             - supervisor-sessions with mobile (sign-in)
@@ -154,29 +154,29 @@ class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
             storage_setup.switchDatabase('accountManagement')
             storage_setup.conCollection('supervisors')
             query_object = {'mobile': INFO_SUPERVISOR_MOBILE}
-            query_key = INFO_SUPERVISOR_NAME
+            query_key = 'name'
             storage_setup.delField(query_object, query_key)
             print '... ok'
         except:
             print 'unset suporvisor fail, continue ...'
         finally:
-            storage_setup.close()
+            storage_setup.client.close()
 
     def teardown_class(cls):
         try:
             print '\nteardown_class:'
             print 'Unset supervisor name...'
-            storage_setup = MongoBase()
-            storage_setup.switchDatabase('accountManagement')
-            storage_setup.conCollection('supervisors')
+            storage_teardown = MongoBase()
+            storage_teardown.switchDatabase('accountManagement')
+            storage_teardown.conCollection('supervisors')
             query_object = {'mobile': INFO_SUPERVISOR_MOBILE}
-            query_key = INFO_SUPERVISOR_NAME
-            storage_setup.delField(query_object, query_key)
+            query_key = name
+            storage_teardown.delField(query_object, query_key)
             print '... ok'
         except:
             print 'unset suporvisor fail, continue ...'
         finally:
-            storage_setup.close()
+            storage_teardown.client.close()
 
     def test_reset_password(self, supervisor_sms_resetpassword):
         r = requests.post(
@@ -190,8 +190,8 @@ class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
 
     def test_login_with_mobile(self, supervisor_login_with_mobile_valid):
         login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
-        assert supervisor_type == GUARDIAN_SESSIONS_OUT_DATA.get('type')
-        assert supervisor_mobile == GUARDIAN_SESSIONS_OUT_DATA.get('mobile')
+        assert supervisor_type == SUPERVISOR_SESSIONS_OUT_DATA.get('type')
+        assert supervisor_mobile == SUPERVISOR_SESSIONS_OUT_DATA.get('mobile')
         payload = get_token_payload(login_token)
         assert payload.get('exp') > time()
     
@@ -204,21 +204,21 @@ class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
                 headers=headers,
                 json=SUPERVISOR_SUPERVISORID_CHANGENAME_VALID_DATA)
         assert r.status_code == 201
-        content_dict = json.laods(r.content)
+        content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
         supervisorId = content_dict.get('id')
         return supervisorId
 
     def test_login_with_name(self, supervisor_login_with_name_valid):
         login_token, supervisor_type, supervisor_id, supervisor_name = supervisor_login_with_name_valid
-        assert supervisor_type == GUARDIAN_SESSIONS_OUT_DATA.get('type')
-        assert supervisor_name == GUARDIAN_SESSIONS_OUT_DATA.get('name')
+        assert supervisor_type == SUPERVISOR_SESSIONS_OUT_DATA.get('type')
+        assert supervisor_name == SUPERVISOR_SESSIONS_OUT_DATA.get('name')
         payload = get_token_payload(login_token)
         assert payload.get('exp') > time()
         
 
     def test_release_mobile(self, supervisor_login_with_mobile_valid,
-            guardian_guardianId_sms_mobilereleasing):
+            supervisor_supervisorId_sms_mobilereleasing):
         login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
         headers = {'authorization': 'Bearer ' + login_token}
         r = requests.post(
@@ -227,13 +227,13 @@ class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
                 headers=headers,
                 json=SUPERVISOR_SUPERVISORID_MOBILERELEASE_VALID_DATA)
         assert r.status_code == 201
-        content_dict = json.laods(r.content)
+        content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
         supervisorId = content_dict.get('id')
         return supervisorId
 
     def test_bind_mobile(self, supervisor_login_with_name_valid,
-            guardian_guardianId_sms_mobilereleasing):
+            supervisor_sms_bindmobile):
         login_token, supervisor_type, supervisor_id, supervisor_name = supervisor_login_with_name_valid
         headers = {'authorization': 'Bearer ' + login_token}
         r = requests.post(
@@ -242,16 +242,42 @@ class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
                 headers=headers,
                 json=SUPERVISOR_SUPERVISORID_BINDINGMOBILE_VALID_DATA)
         assert r.status_code == 201
-        content_dict = json.laods(r.content)
+        content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
         supervisorId = content_dict.get('id')
         return supervisorId
 
-    # TODO
-    '''
-    test_create_worker
-    test_maintian_worker
-    '''
+    @pytest.fixture(scope='class')
+    def test_create_worker(self, supervisor_login_with_mobile_valid):
+        login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
+        headers = {'authorization': 'Bearer ' + login_token}
+        r = requests.post(
+                SUPERVISOR_SUPERVISORID_CREATEWORKER_URL.replace('supervisorId',
+                    supervisor_id),
+                headers=headers,
+                json=SUPERVISOR_SUPERVISORID_CREATEWORKER_VALID_DATA)
+        assert r.status_code == 201
+        content_dict = json.loads(r.content)
+        assert content_dict.has_key('id') == True
+        workerId = content_dict.get('id')
+        return workerId
+
+    def test_maintian_worker(self, supervisor_login_with_mobile_valid,
+            test_create_worker):
+        login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
+        worker_id = test_create_worker
+        headers = {'authorization': 'Bearer ' + login_token}
+        SUPERVISOR_SUPERVISORID_MAINTAINWORKER_URL_TEMP = SUPERVISOR_SUPERVISORID_MAINTAINWORKER_URL.replace('supervisorId',
+                supervisor_id)
+        r = requests.delete(
+                SUPERVISOR_SUPERVISORID_MAINTAINWORKER_URL_TEMP.replace('workerId',
+                    worker_id),
+                headers=headers)
+        assert r.status_code == 200
+        content_dict = json.loads(r.content)
+        assert content_dict.has_key('id') == True
+        workerId = content_dict.get('id')
+        return workerId
 
     def test_change_password(self, supervisor_login_with_mobile_valid,
             supervisor_supervisorId_sms_changepassword):
@@ -263,7 +289,26 @@ class TestAuthorizationSupervisor(TestSupervisorSupervisorIdSmsBase):
                 headers=headers,
                 json=SUPERVISOR_SUPERVISORID_CHANGEPASSWORD_VALID_DATA)
         assert r.status_code == 201
-        content_dict = json.laods(r.content)
+        content_dict = json.loads(r.content)
         assert content_dict.has_key('id') == True
         supervisorId = content_dict.get('id')
         return supervisorId
+
+
+class TestGatewaySupervisor(TestSupervisorSessionBase):
+
+    def test_maintian_workers_get(self, supervisor_login_with_mobile_valid):
+        login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
+        headers = {'authorization': 'Bearer ' + login_token}
+        r = requests.get(
+                GATEWAY_SUPERVISOR_MAINTAINWORKER_URL,
+                headers=headers)
+        assert r.status_code == 200
+
+    @pytest.fixture(scope='class')
+    def supervisor_profiles(self):
+        login_token, supervisor_type, supervisor_id, supervisor_mobile = supervisor_login_with_mobile_valid
+        headers = {'authorization': 'Bearer ' + login_token}
+        r = requests.post(
+                )
+

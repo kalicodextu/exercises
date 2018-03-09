@@ -388,16 +388,9 @@
     "url" : "/authorization/supervisors/supervisorId/change-password",
     "input_data" : {
         "valid" : {
-            "new" : {
-                "newPassword" : "123456789",
-                "oldPassword" : "123456",
-                "smsCode" : "1609"
-            },
-            "origin" : {
-                "newPassword" : "123456",
-                "oldPassword" : "123456789",
-                "smsCode" : "1609"
-            }
+            "newPassword" : "123456789",
+            "oldPassword" : "123456",
+            "smsCode" : "1609"
         },
         "invalid" : {}
     },
